@@ -3,7 +3,7 @@ import java.util.HashMap;
 //import java.util.Scanner;
 
 /**
- * B0544231 �¤�޷
+ * B0544231 謝心瑀
  * Try to write some comments for your codes (methods, 10 points)
  */
 public class HW3 {
