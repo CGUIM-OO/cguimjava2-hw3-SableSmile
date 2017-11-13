@@ -8,42 +8,44 @@ public class Deck {
 	public int nUsed;
 	public Deck(int nDeck){
 		cards=new ArrayList<Card>();
-		for(int deck=1;deck<=nDeck;deck++){  		//deck->¦Ü¤Ö­n¤@°ÆµP¡AnDeck->¦Ü¦h­n´X°ÆµP
-			for(Card.Suit s : Card.Suit.values()){  //¤@°ÆµP¦³4ºØªá¦â
-				for(int rank=1;rank<=13;rank++){	//1ºØªá¦â13±iµP
-					Card card=new Card(s,rank);		//¹êÅé¤Æ¥dµP
-					cards.add(card);				//·s¼W¥dµP
+		for(int deck=1;deck<=nDeck;deck++){  		//deck->è‡³å°‘è¦ä¸€å‰¯ç‰Œï¼ŒnDeck->è‡³å¤šè¦å¹¾å‰¯ç‰Œ
+			for(Card.Suit s : Card.Suit.values()){  //ä¸€å‰¯ç‰Œæœ‰4ç¨®èŠ±è‰²
+				for(int rank=1;rank<=13;rank++){	//1ç¨®èŠ±è‰²13å¼µç‰Œ
+					Card card=new Card(s,rank);		//å¯¦é«”åŒ–å¡ç‰Œ
+					cards.add(card);				//æ–°å¢å¡ç‰Œ
 				}
 			}
 		}
-		shuffle(); 	//¬~µP
+		shuffle(); 	//æ´—ç‰Œ
 	}	
 	public Card getOneCard(){
-		Card c1=new Card(cards.get(nUsed).getSuit(),cards.get(nUsed).getRank());	//¹êÅé¤Æ¨ÃµoµP
-		usedCard.add(cards.get(nUsed));		//±Nµo¥XªºµP¬ö¿ı¦busedCard
-		nUsed++;	//¬ö¿ıµo¥XªºµP¼Æ¶q
+		Card c1=new Card(cards.get(nUsed).getSuit(),cards.get(nUsed).getRank());	//å¯¦é«”åŒ–ä¸¦ç™¼ç‰Œ
+		usedCard.add(cards.get(nUsed));		//å°‡ç™¼å‡ºçš„ç‰Œç´€éŒ„åœ¨usedCard
+		nUsed++;	//ç´€éŒ„ç™¼å‡ºçš„ç‰Œæ•¸é‡
 
-		if(nUsed==52) {	//·íµPµo§¹¤F
-			shuffle();	//¬~µP
-			nUsed=0;	//µo¥XªºµP¼Æ¶qÂk0
+		if(nUsed==52) {	//ç•¶ç‰Œç™¼å®Œäº†
+			shuffle();	//æ´—ç‰Œ
+			nUsed=0;	//ç™¼å‡ºçš„ç‰Œæ•¸é‡æ­¸0
 		}
 		return c1;
 	}
 	public void shuffle(){		
-		Random rnd = new Random(); 	//¨Ï¥ÎRandom ²£¥Í¤@­Órnd
-		nUsed=0;	//µo¥XªºµP¼Æ¶q¬°0
+		Random rnd = new Random(); 	//ä½¿ç”¨Random ç”¢ç”Ÿä¸€å€‹rnd
+		nUsed=0;	//ç™¼å‡ºçš„ç‰Œæ•¸é‡ç‚º0
 		usedCard=new ArrayList<Card>();
-		/* ¬~µP¹Lµ{¤¤ÀH¾÷¬D¿ï¬Y¤@±iµP¡A
-		 * ¿ï¨ìªºµP·|³Q¨Ì§Ç©ñ¨ì³Ì¤W­±¡A		
-		 * ¸g¹L"¬~µP"(°j°é)­«½Æn¦¸«á¡A
-		 * ±o¨ì¥dµPªá¦â¡BµP¸¹´N·|³Q¥´¶Ã*/
+		/* æ´—ç‰Œéç¨‹ä¸­éš¨æ©ŸæŒ‘é¸æŸä¸€å¼µç‰Œï¼Œ
+		 * é¸åˆ°çš„ç‰Œæœƒè¢«ä¾åºæ”¾å…¥usedCardï¼Œ
+		 * ä¸¦å°‡cardsè£¡è¢«é¸ä¸­çš„ç‰Œç§»é™¤ï¼Œ
+		 * ç¶“é"æ´—ç‰Œ"(è¿´åœˆ)é‡è¤‡næ¬¡å¾Œï¼Œ
+		 * usedCardä¸­å¾—åˆ°çš„å¡ç‰ŒèŠ±è‰²ã€ç‰Œè™Ÿå°±æœƒè¢«æ‰“äº‚
+		   å†å°‡æ´—å¥½çš„ç‰Œå¾usedCardæ”¾å›cardsé™£åˆ—ä¸­*/
 		for(int n=0;n<52;n++){      	
-			int j = rnd.nextInt(52-n);	//²£¥Í¤@­ÓÀH¾÷ÅÜ¼Ærnd¡A¨M©w¿ï¨ìªº¼Æ¦r¦b¤@Å|¼³§JµP¤¤ªº"±Æ§Ç"
-			usedCard.add(cards.get(j));	//±N¿ï¨ìªºµP¼È®É©ñ¨ìusedCard°}¦C¤¤
-			cards.remove(cards.get(j));	//±N¿ï¨ìªºµP±qcards°}¦C¤¤²¾°£
+			int j = rnd.nextInt(52-n);	//ç”¢ç”Ÿä¸€å€‹éš¨æ©Ÿè®Šæ•¸rndï¼Œæ±ºå®šé¸åˆ°çš„æ•¸å­—åœ¨ä¸€ç–Šæ’²å…‹ç‰Œä¸­çš„"æ’åº"
+			usedCard.add(cards.get(j));	//å°‡é¸åˆ°çš„ç‰Œæš«æ™‚æ”¾åˆ°usedCardé™£åˆ—ä¸­
+			cards.remove(cards.get(j));	//å°‡é¸åˆ°çš„ç‰Œå¾cardsé™£åˆ—ä¸­ç§»é™¤
 		}
 		for(int x=0;x<52;x++){
-			cards.add(usedCard.get(x));	//¨Ì§Ç±NusedCard°}¦C¤¤ªºµP©ñ¦^cards°}¦C¤¤¡A§¹¦¨¬~µP°Ê§@
+			cards.add(usedCard.get(x));	//ä¾åºå°‡usedCardé™£åˆ—ä¸­çš„ç‰Œæ”¾å›cardsé™£åˆ—ä¸­ï¼Œå®Œæˆæ´—ç‰Œå‹•ä½œ
 		}
 	}
 	public ArrayList<Card> getAllCards(){
